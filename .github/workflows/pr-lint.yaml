@@ -70,7 +70,6 @@ jobs:
       - name: Bump and Collect Versions
         run: |
           echo "CURRENT_VERSION=v$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' packages/fuels/package.json)" >> $GITHUB_ENV
-          pnpm changeset version
           echo "RELEASE_VERSION=v$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' packages/fuels/package.json)" >> $GITHUB_ENV
           echo "COMMIT_MSG=$(git log -n 1 --format=%B)" >> $GITHUB_ENV
           git reset --hard
@@ -80,8 +79,8 @@ jobs:
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         if: |
-          ${{ env.RELEASE_VERSION != env.CURRENT_VERSION }} &&
-          !startsWith(env.COMMIT_MSG, 'ci(changesets)')
+          ${{ env.RELEASE_VERSION != env.CURRENT_VERSION }} ||
+          startsWith(env.COMMIT_MSG, 'ci(changesets)')
         run: |
           echo $COMMIT_MSG
           echo $RELEASE_VERSION
