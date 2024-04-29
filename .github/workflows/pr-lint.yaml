@@ -79,7 +79,7 @@ jobs:
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
-        if: ${{ env.RELEASE_VERSION != env.CURRENT_VERSION && !startsWith(env.COMMIT_MSG, "ci(changesets)") }}
+        if: ${{ env.RELEASE_VERSION != env.CURRENT_VERSION }} && ${{ ! startsWith(env.COMMIT_MSG, "ci(changesets)") }}
         run: echo $COMMIT_MSG
         env:
           COMMIT_MSG: ${{ env.COMMIT_MSG }}
