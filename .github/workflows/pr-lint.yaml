@@ -72,7 +72,7 @@ jobs:
           echo "CURRENT_VERSION=v$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' packages/fuels/package.json)" >> $GITHUB_ENV
           pnpm changeset version
           echo "RELEASE_VERSION=v$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' packages/fuels/package.json)" >> $GITHUB_ENV
-          echo "COMMIT_MSG=$(git log -n 1 --format=%B)" >> $GITHUB_ENV
+          echo "COMMIT_MSG=$(git log -1 --format=%B)" >> $GITHUB_ENV
           git reset --hard
           echo eee
         env:
@@ -83,7 +83,7 @@ jobs:
           ${{ env.RELEASE_VERSION != env.CURRENT_VERSION }} ||
           startsWith(env.COMMIT_MSG, 'ci(changesets)')
         run: |
-          git log -n 1
+          git log -1
           echo $COMMIT_MSG
           echo $RELEASE_VERSION
           echo $CURRENT_VERSION
