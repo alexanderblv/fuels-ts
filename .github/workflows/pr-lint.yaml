@@ -74,7 +74,6 @@ jobs:
           echo "RELEASE_VERSION=v$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' packages/fuels/package.json)" >> $GITHUB_ENV
           echo "COMMIT_MSG=$(git log -1 --format=%B)" >> $GITHUB_ENV
           git reset --hard
-          echo eee
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
