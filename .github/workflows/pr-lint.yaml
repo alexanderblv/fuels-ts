@@ -83,6 +83,7 @@ jobs:
           startsWith(env.COMMIT_MSG, 'ci(changesets)')
         run: |
           git log -1
+          git show --no-patch
           echo $COMMIT_MSG
           echo $RELEASE_VERSION
           echo $CURRENT_VERSION
