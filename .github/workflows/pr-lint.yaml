@@ -82,9 +82,14 @@ jobs:
         if: |
           ${{ env.RELEASE_VERSION != env.CURRENT_VERSION }} &&
           !startsWith(env.COMMIT_MSG, 'ci(changesets)')
-        run: echo $COMMIT_MSG
+        run: |
+          echo $COMMIT_MSG
+          echo $RELEASE_VERSION
+          echo $CURRENT_VERSION
         env:
           COMMIT_MSG: ${{ env.COMMIT_MSG }}
+          RELEASE_VERSION: ${{ env.RELEASE_VERSION }}
+          CURRENT_VERSION: ${{ env.CURRENT_VERSION }}
 
       - name: Validate Changeset
         run: pnpm changeset status --since=origin/${{ github.base_ref }}
