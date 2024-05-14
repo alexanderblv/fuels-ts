@@ -21,6 +21,7 @@ export default defineConfig({
     ],
     globals: true,
     setupFiles: ["./vite.env.ts"],
+    globalSetup: "./vite.global-setup.ts",
     env: loadEnv(mode, process.cwd(), ""),
     coverage: {
       enabled: true,

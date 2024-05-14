@@ -1,6 +1,8 @@
 import { existsSync } from 'fs';
-import { join } from 'path';
-
+// import { join } from 'path';
+function join(...paths: string[]) {
+  return paths.join('/');
+}
 export const findBinPath = (binCommandName: string, startingDir: string): string => {
   const cmdPath = join(startingDir, 'node_modules', '.bin', binCommandName);
   const parentDir = join(startingDir, '..');

@@ -7,8 +7,7 @@ import { Provider } from '../providers';
 import type { WalletUnlocked } from '../wallet';
 
 import { AssetId } from './asset-id';
-import type { LaunchNodeOptions } from './launchNode';
-import { launchNode } from './launchNode';
+import { launchNode, type LaunchNodeOptions } from './launchNode';
 import type { WalletConfigOptions } from './wallet-config';
 import { WalletConfig } from './wallet-config';
 
@@ -64,7 +63,7 @@ export async function setupTestProviderAndWallets({
     }
   );
 
-  const { cleanup, url } = await launchNode({
+  const launchNodeOptions = {
     loggingEnabled: false,
     ...nodeOptions,
     snapshotConfig: mergeDeepRight(
@@ -72,7 +71,29 @@ export async function setupTestProviderAndWallets({
       walletConfig.apply(nodeOptions?.snapshotConfig)
     ),
     port: '0',
-  });
+  };
+
+  let cleanup: () => void;
+  let url: string;
+  if (process.env.LAUNCH_NODE_SERVER_URL) {
+    const serverUrl = process.env.LAUNCH_NODE_SERVER_URL;
+    const response = await fetch(serverUrl, {
+      method: 'POST',
+      body: JSON.stringify(launchNodeOptions),
+    }).then((res) => res.json());
+
+    url = response.url;
+    const port = response.port;
+    cleanup = () => {
+      console.log('calling cleanup on ', serverUrl);
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      fetch(`${serverUrl}/cleanup/${port}`);
+    };
+  } else {
+    const settings = await launchNode(launchNodeOptions);
+    url = settings.url;
+    cleanup = settings.cleanup;
+  }
 
   let provider: Provider;
 

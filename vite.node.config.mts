@@ -6,6 +6,7 @@ import baseConfig from "./vite.base.config.mts";
 const config: UserConfig = {
   test: {
     coverage: {
+      enabled: false,
       reportsDirectory: "coverage/environments/node",
     },
   },

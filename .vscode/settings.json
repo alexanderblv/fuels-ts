@@ -9,8 +9,7 @@
     "**/.git": true,
     "**/.DS_Store": true,
     "**/node_modules": true,
-    "**/.turbo": true,
-    "**/dist": true
+    "**/.turbo": true
   },
   "files.trimTrailingWhitespace": true,
   "[typescript]": {
