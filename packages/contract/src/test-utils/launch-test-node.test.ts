@@ -1,27 +1,37 @@
+import type { JsonAbi } from '@fuel-ts/abi-coder';
 import { Provider } from '@fuel-ts/account';
 import * as setupTestProviderAndWalletsMod from '@fuel-ts/account/test-utils';
 import { FuelError } from '@fuel-ts/errors';
 import { expectToThrowFuelError, safeExec } from '@fuel-ts/errors/test-utils';
 import { hexlify, type SnapshotConfigs } from '@fuel-ts/utils';
-import { waitUntilUnreachable } from '@fuel-ts/utils/test-utils';
+import { getForcProject, waitUntilUnreachable } from '@fuel-ts/utils/test-utils';
 import { randomBytes, randomUUID } from 'crypto';
 import { existsSync, mkdirSync, readFileSync, rmSync } from 'fs';
 import { writeFile, copyFile } from 'fs/promises';
 import os from 'os';
 import { join } from 'path';
 
+import ContractFactory from '../contract-factory';
+
 import { launchTestNode } from './launch-test-node';
 
-const pathToContractRootDir = join(__dirname, '../../test/fixtures/simple-contract');
+const { binHexlified, abiContents } = getForcProject<JsonAbi>({
+  projectDir: '../../test/fixtures/forc-projects/simple-contract',
+  projectName: 'simple-contract',
+  build: 'release',
+});
 
 async function generateChainConfigFile(chainName: string): Promise<[string, () => void]> {
   const configsFolder = join(__dirname, '../../../../', '.fuel-core', 'configs');
+
   const chainMetadata = JSON.parse(
     readFileSync(join(configsFolder, 'metadata.json'), 'utf-8')
   ) as SnapshotConfigs['metadata'];
+
   const chainConfig = JSON.parse(
     readFileSync(join(configsFolder, chainMetadata.chain_config), 'utf-8')
   ) as SnapshotConfigs['chainConfig'];
+
   chainConfig.chain_name = chainName;
 
   const tempSnapshotDirPath = join(os.tmpdir(), '.fuels-ts', randomUUID());
@@ -80,7 +90,18 @@ describe('launchTestNode', () => {
     const spy = vi.spyOn(setupTestProviderAndWalletsMod, 'setupTestProviderAndWallets');
 
     const { error } = await safeExec(() =>
-      launchTestNode({ deployContracts: ['invalid location'] })
+      launchTestNode({
+        deployContracts: [
+          {
+            deployer: {
+              deployContract: () => {
+                throw new Error('Test error');
+              },
+            },
+            bytecode: binHexlified,
+          },
+        ],
+      })
     );
     expect(error).toBeDefined();
     // Verify that error isn't due to
@@ -96,22 +117,17 @@ describe('launchTestNode', () => {
 
   test('a contract can be deployed', async () => {
     using launched = await launchTestNode({
-      deployContracts: [{ contractDir: pathToContractRootDir }],
-    });
-
-    const {
-      contracts: [contract],
-    } = launched;
-
-    const response = await contract.functions.test_function().call();
-    expect(response.value).toBe(true);
-  });
-
-  test('a contract can be deployed by providing just the path', async () => {
-    using launched = await launchTestNode({
-      walletConfig: {},
-      providerOptions: {},
-      deployContracts: [pathToContractRootDir],
+      deployContracts: [
+        {
+          deployer: {
+            deployContract: async (bytecode, wallet, options) => {
+              const factory = new ContractFactory(bytecode, abiContents, wallet);
+              return factory.deployContract(options);
+            },
+          },
+          bytecode: binHexlified,
+        },
+      ],
     });
 
     const {
@@ -128,8 +144,25 @@ describe('launchTestNode', () => {
         count: 2,
       },
       deployContracts: [
-        pathToContractRootDir,
-        { contractDir: pathToContractRootDir, walletIndex: 1 },
+        {
+          deployer: {
+            deployContract: async (bytecode, wallet, options) => {
+              const factory = new ContractFactory(bytecode, abiContents, wallet);
+              return factory.deployContract(options);
+            },
+          },
+          bytecode: binHexlified,
+        },
+        {
+          deployer: {
+            deployContract: async (bytecode, wallet, options) => {
+              const factory = new ContractFactory(bytecode, abiContents, wallet);
+              return factory.deployContract(options);
+            },
+          },
+          bytecode: binHexlified,
+          walletIndex: 1,
+        },
       ],
     });
 
@@ -152,7 +185,18 @@ describe('launchTestNode', () => {
     await expectToThrowFuelError(
       async () => {
         await launchTestNode({
-          deployContracts: [{ contractDir: pathToContractRootDir, walletIndex: 2 }],
+          deployContracts: [
+            {
+              deployer: {
+                deployContract: async (bytecode, wallet, options) => {
+                  const factory = new ContractFactory(bytecode, abiContents, wallet);
+                  return factory.deployContract(options);
+                },
+              },
+              bytecode: binHexlified,
+              walletIndex: 2,
+            },
+          ],
         });
       },
       {

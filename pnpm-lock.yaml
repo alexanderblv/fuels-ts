@@ -29,12 +29,9 @@ importers:
       '@changesets/types':
         specifier: ^6.0.0
         version: 6.0.0
-<<<<<<< HEAD
-=======
       '@elasticpath/textlint-rule-no-dead-relative-link':
         specifier: ^1.1.1
         version: 1.1.1
->>>>>>> origin/master
       '@fuel-ts/forc':
         specifier: workspace:*
         version: link:packages/forc
@@ -323,7 +320,7 @@ importers:
         version: 18.2.0(react@18.2.0)
       react-scripts:
         specifier: 5.0.1
-        version: 5.0.1(@babel/plugin-syntax-flow@7.23.3(@babel/core@7.22.5))(@babel/plugin-transform-react-jsx@7.23.4(@babel/core@7.22.5))(@types/babel__core@7.20.5)(esbuild@0.17.19)(eslint@8.54.0)(react@18.2.0)(ts-node@10.9.1(@types/node@16.18.34)(typescript@5.2.2))(type-fest@4.18.1)(typescript@5.2.2)
+        version: 5.0.1(@babel/plugin-syntax-flow@7.23.3(@babel/core@7.22.5))(@babel/plugin-transform-react-jsx@7.23.4(@babel/core@7.22.5))(@types/babel__core@7.20.5)(esbuild@0.17.19)(eslint@8.54.0)(react@18.2.0)(ts-node@10.9.1(@types/node@16.18.34)(typescript@5.2.2))(type-fest@3.1.0)(typescript@5.2.2)
       typescript:
         specifier: ~5.2.2
         version: 5.2.2
@@ -730,7 +727,7 @@ importers:
         version: 2.1.2
       type-fest:
         specifier: ^4.6.0
-        version: 4.18.1
+        version: 4.18.2
 
   packages/address:
     dependencies:
@@ -1208,7 +1205,6 @@ importers:
         version: 5.2.2
 
 packages:
-<<<<<<< HEAD
 
   '@aashutoshrathi/word-wrap@1.2.6':
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
@@ -1229,27 +1225,6 @@ packages:
   '@algolia/autocomplete-core@1.9.3':
     resolution: {integrity: sha512-009HdfugtGCdC4JdXUbVJClA0q0zh24yyePn+KUGk3rP7j8FEe/m5Yo/z65gn6nP/cM39PxpzqKrL7A6fP6PPw==}
 
-=======
-  '@aashutoshrathi/word-wrap@1.2.6':
-    resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
-    engines: {node: '>=0.10.0'}
-
-  '@actions/core@1.10.1':
-    resolution: {integrity: sha512-3lBR9EDAY+iYIpTnTIXmWcNbX3T2kCkAEQGIQx4NVQ0575nk2k3GRZDTPQG+vVtS2izSLmINlxXf0uLtnrTP+g==}
-
-  '@actions/github@6.0.0':
-    resolution: {integrity: sha512-alScpSVnYmjNEXboZjarjukQEzgCRmjMv6Xj47fsdnqGS73bjJNDpiiXmp8jr0UZLdUB6d9jW63IcmddUP+l0g==}
-
-  '@actions/http-client@2.2.1':
-    resolution: {integrity: sha512-KhC/cZsq7f8I4LfZSJKgCvEwfkE8o1538VoBeoGzokVLLnbFDEAdFD3UhoMklxo2un9NJVBdANOresx7vTHlHw==}
-
-  '@adraffy/ens-normalize@1.9.2':
-    resolution: {integrity: sha512-0h+FrQDqe2Wn+IIGFkTCd4aAwTJ+7834Ek1COohCyV26AXhwQ7WQaz+4F/nLOeVl/3BtWHOHLPsq46V8YB46Eg==}
-
-  '@algolia/autocomplete-core@1.9.3':
-    resolution: {integrity: sha512-009HdfugtGCdC4JdXUbVJClA0q0zh24yyePn+KUGk3rP7j8FEe/m5Yo/z65gn6nP/cM39PxpzqKrL7A6fP6PPw==}
-
->>>>>>> origin/master
   '@algolia/autocomplete-plugin-algolia-insights@1.9.3':
     resolution: {integrity: sha512-a/yTUkcO/Vyy+JffmAnTWbr4/90cLzw+CC3bRbhnULr/EM0fGNvM13oQQ14f2moLMcVDyAx/leczLlAOovhSZg==}
     peerDependencies:
@@ -2152,13 +2127,10 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0
 
-<<<<<<< HEAD
-=======
   '@babel/polyfill@7.12.1':
     resolution: {integrity: sha512-X0pi0V6gxLi6lFZpGmeNa4zxtwEmCs42isWLNjZZDE0Y8yVfgu0T2OAHlzBbdYlqbW/YXVvoBHpATEM+goCj8g==}
     deprecated: 🚨 This package has been deprecated in favor of separate inclusion of a polyfill and regenerator-runtime (when needed). See the @babel/polyfill docs (https://babeljs.io/docs/en/babel-polyfill) for more information.
 
->>>>>>> origin/master
   '@babel/preset-env@7.22.5':
     resolution: {integrity: sha512-fj06hw89dpiZzGZtxn+QybifF07nNiZjZ7sazs2aVDcysAZVGjW7+7iFYxg6GLNM47R/thYfLdrXc+2f11Vi9A==}
     engines: {node: '>=6.9.0'}
@@ -2415,16 +2387,6 @@ packages:
       search-insights:
         optional: true
 
-<<<<<<< HEAD
-  '@ericcornelissen/bash-parser@0.5.2':
-    resolution: {integrity: sha512-4pIMTa1nEFfMXitv7oaNEWOdM+zpOZavesa5GaiWTgda6Zk32CFGxjUp/iIaN0PwgUW1yTq/fztSjbpE8SLGZQ==}
-    engines: {node: '>=4'}
-
-  '@es-joy/jsdoccomment@0.40.1':
-    resolution: {integrity: sha512-YORCdZSusAlBrFpZ77pJjc5r1bQs5caPWtAu+WWmiSo+8XaUzseapVrfAtiRFbQWnrBxxLLEwF6f6ZG/UgCQCg==}
-    engines: {node: '>=16'}
-
-=======
   '@elasticpath/textlint-rule-no-dead-relative-link@1.1.1':
     resolution: {integrity: sha512-j7XAh1vJmY1rnLOBGDcuno/HPHU6PUOHsJyY+rACIKkjsLChPlw4ACEwxeooE81tzJFOma0IdMviK/noqc5gIg==}
     engines: {node: '>=6.0.0'}
@@ -2437,7 +2399,6 @@ packages:
     resolution: {integrity: sha512-YORCdZSusAlBrFpZ77pJjc5r1bQs5caPWtAu+WWmiSo+8XaUzseapVrfAtiRFbQWnrBxxLLEwF6f6ZG/UgCQCg==}
     engines: {node: '>=16'}
 
->>>>>>> origin/master
   '@esbuild/aix-ppc64@0.19.12':
     resolution: {integrity: sha512-bmoCYyWdEL3wDQIVbcyzRyeKLgk2WtWLTWz1ZIAZF/EGbNOwSA6ew3PftJ1PqMiOOGu0OyFMzG53L0zqIpPeNA==}
     engines: {node: '>=12'}
@@ -5808,13 +5769,10 @@ packages:
 
   core-js-pure@3.31.0:
     resolution: {integrity: sha512-/AnE9Y4OsJZicCzIe97JP5XoPKQJfTuEG43aEVLFJGOJpyqELod+pE6LEl63DfG1Mp8wX97LDaDpy1GmLEUxlg==}
-<<<<<<< HEAD
-=======
 
   core-js@2.6.12:
     resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
     deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
->>>>>>> origin/master
 
   core-js@3.31.0:
     resolution: {integrity: sha512-NIp2TQSGfR6ba5aalZD+ZQ1fSxGhDo/s1w0nx3RYzf2pnJxt7YynxFlFScP6eV7+GZsKO95NSjGxyJsU3DZgeQ==}
@@ -7214,12 +7172,9 @@ packages:
 
   get-url-origin@1.0.1:
     resolution: {integrity: sha512-MMSKo16gB2+6CjWy55jNdIAqUEaKgw3LzZCb8wVVtFrhoQ78EXyuYXxDdn3COI3A4Xr4ZfM3fZa9RTjO6DOTxw==}
-<<<<<<< HEAD
-=======
 
   github-slugger@1.5.0:
     resolution: {integrity: sha512-wIh+gKBI9Nshz2o46B0B3f5k/W+WI9ZAv6y5Dn5WJ5SK1t0TnDimB4WE5rmTD05ZAIn8HALCZVmCsvj0w0v0lw==}
->>>>>>> origin/master
 
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -11458,40 +11413,6 @@ packages:
     resolution: {integrity: sha512-1h/Lnq9yajKY2PEbBadPXj3VxsDDu844OnaAo52UVmIzIvwwtBPIuNvkjuzBlTWpfJyUbG3ez0KSBibQkj4ojg==}
     engines: {node: '>=0.6.11 <=0.7.0 || >=0.7.3'}
 
-<<<<<<< HEAD
-  turbo-darwin-64@1.8.8:
-    resolution: {integrity: sha512-18cSeIm7aeEvIxGyq7PVoFyEnPpWDM/0CpZvXKHpQ6qMTkfNt517qVqUTAwsIYqNS8xazcKAqkNbvU1V49n65Q==}
-    cpu: [x64]
-    os: [darwin]
-
-  turbo-darwin-arm64@1.8.8:
-    resolution: {integrity: sha512-ruGRI9nHxojIGLQv1TPgN7ud4HO4V8mFBwSgO6oDoZTNuk5ybWybItGR+yu6fni5vJoyMHXOYA2srnxvOc7hjQ==}
-    cpu: [arm64]
-    os: [darwin]
-
-  turbo-linux-64@1.8.8:
-    resolution: {integrity: sha512-N/GkHTHeIQogXB1/6ZWfxHx+ubYeb8Jlq3b/3jnU4zLucpZzTQ8XkXIAfJG/TL3Q7ON7xQ8yGOyGLhHL7MpFRg==}
-    cpu: [x64]
-    os: [linux]
-
-  turbo-linux-arm64@1.8.8:
-    resolution: {integrity: sha512-hKqLbBHgUkYf2Ww8uBL9UYdBFQ5677a7QXdsFhONXoACbDUPvpK4BKlz3NN7G4NZ+g9dGju+OJJjQP0VXRHb5w==}
-    cpu: [arm64]
-    os: [linux]
-
-  turbo-windows-64@1.8.8:
-    resolution: {integrity: sha512-2ndjDJyzkNslXxLt+PQuU21AHJWc8f6MnLypXy3KsN4EyX/uKKGZS0QJWz27PeHg0JS75PVvhfFV+L9t9i+Yyg==}
-    cpu: [x64]
-    os: [win32]
-
-  turbo-windows-arm64@1.8.8:
-    resolution: {integrity: sha512-xCA3oxgmW9OMqpI34AAmKfOVsfDljhD5YBwgs0ZDsn5h3kCHhC4x9W5dDk1oyQ4F5EXSH3xVym5/xl1J6WRpUg==}
-    cpu: [arm64]
-    os: [win32]
-
-  turbo@1.8.8:
-    resolution: {integrity: sha512-qYJ5NjoTX+591/x09KgsDOPVDUJfU9GoS+6jszQQlLp1AHrf1wRFA3Yps8U+/HTG03q0M4qouOfOLtRQP4QypA==}
-=======
   turbo-darwin-64@1.13.3:
     resolution: {integrity: sha512-glup8Qx1qEFB5jerAnXbS8WrL92OKyMmg5Hnd4PleLljAeYmx+cmmnsmLT7tpaVZIN58EAAwu8wHC6kIIqhbWA==}
     cpu: [x64]
@@ -11524,7 +11445,6 @@ packages:
 
   turbo@1.13.3:
     resolution: {integrity: sha512-n17HJv4F4CpsYTvKzUJhLbyewbXjq1oLCi90i5tW1TiWDz16ML1eDG7wi5dHaKxzh5efIM56SITnuVbMq5dk4g==}
->>>>>>> origin/master
     hasBin: true
 
   type-check@0.3.2:
@@ -11574,13 +11494,10 @@ packages:
   type-fest@3.1.0:
     resolution: {integrity: sha512-StmrZmK3eD9mDF9Vt7UhqthrDSk66O9iYl5t5a0TSoVkHjl0XZx/xuc/BRz4urAXXGHOY5OLsE0RdJFIApSFmw==}
     engines: {node: '>=14.16'}
-<<<<<<< HEAD
 
-  type-fest@4.18.1:
-    resolution: {integrity: sha512-qXhgeNsX15bM63h5aapNFcQid9jRF/l3ojDoDFmekDQEUufZ9U4ErVt6SjDxnHp48Ltrw616R8yNc3giJ3KvVQ==}
+  type-fest@4.18.2:
+    resolution: {integrity: sha512-+suCYpfJLAe4OXS6+PPXjW3urOS4IoP9waSiLuXfLgqZODKw/aWwASvzqE886wA0kQgGy0mIWyhd87VpqIy6Xg==}
     engines: {node: '>=16'}
-=======
->>>>>>> origin/master
 
   type-is@1.6.18:
     resolution: {integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==}
@@ -12382,14 +12299,9 @@ packages:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
 
 snapshots:
-<<<<<<< HEAD
 
   '@aashutoshrathi/word-wrap@1.2.6': {}
 
-=======
-  '@aashutoshrathi/word-wrap@1.2.6': {}
-
->>>>>>> origin/master
   '@actions/core@1.10.1':
     dependencies:
       '@actions/http-client': 2.2.1
@@ -13584,10 +13496,6 @@ snapshots:
       '@babel/helper-create-regexp-features-plugin': 7.22.5(@babel/core@7.22.5)
       '@babel/helper-plugin-utils': 7.22.5
 
-<<<<<<< HEAD
-  '@babel/preset-env@7.22.5(@babel/core@7.22.5)':
-    dependencies:
-=======
   '@babel/polyfill@7.12.1':
     dependencies:
       core-js: 2.6.12
@@ -13595,7 +13503,6 @@ snapshots:
 
   '@babel/preset-env@7.22.5(@babel/core@7.22.5)':
     dependencies:
->>>>>>> origin/master
       '@babel/compat-data': 7.22.5
       '@babel/core': 7.22.5
       '@babel/helper-compilation-targets': 7.22.5(@babel/core@7.22.5)
@@ -14080,15 +13987,12 @@ snapshots:
     transitivePeerDependencies:
       - '@algolia/client-search'
 
-<<<<<<< HEAD
-=======
   '@elasticpath/textlint-rule-no-dead-relative-link@1.1.1':
     dependencies:
       '@babel/polyfill': 7.12.1
       github-slugger: 1.5.0
       textlint-rule-helper: 2.3.0
 
->>>>>>> origin/master
   '@ericcornelissen/bash-parser@0.5.2':
     dependencies:
       array-last: 1.3.0
@@ -15462,11 +15366,7 @@ snapshots:
       picocolors: 1.0.0
       tslib: 2.6.0
 
-<<<<<<< HEAD
-  '@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.11.0)(type-fest@4.18.1)(webpack-dev-server@4.15.1(webpack@5.88.0(esbuild@0.17.19)))(webpack@5.88.0(esbuild@0.17.19))':
-=======
   '@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.11.0)(type-fest@3.1.0)(webpack-dev-server@4.15.1(webpack@5.88.0(esbuild@0.17.19)))(webpack@5.88.0(esbuild@0.17.19))':
->>>>>>> origin/master
     dependencies:
       ansi-html-community: 0.0.8
       common-path-prefix: 3.0.0
@@ -15480,7 +15380,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.88.0(esbuild@0.17.19)
     optionalDependencies:
-      type-fest: 4.18.1
+      type-fest: 3.1.0
       webpack-dev-server: 4.15.1(webpack@5.88.0(esbuild@0.17.19))
 
   '@pnpm/constants@7.1.1': {}
@@ -23747,17 +23647,10 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.2.9
 
-<<<<<<< HEAD
-  react-scripts@5.0.1(@babel/plugin-syntax-flow@7.23.3(@babel/core@7.22.5))(@babel/plugin-transform-react-jsx@7.23.4(@babel/core@7.22.5))(@types/babel__core@7.20.5)(esbuild@0.17.19)(eslint@8.54.0)(react@18.2.0)(ts-node@10.9.1(@types/node@16.18.34)(typescript@5.2.2))(type-fest@4.18.1)(typescript@5.2.2):
-    dependencies:
-      '@babel/core': 7.22.5
-      '@pmmmwh/react-refresh-webpack-plugin': 0.5.10(react-refresh@0.11.0)(type-fest@4.18.1)(webpack-dev-server@4.15.1(webpack@5.88.0(esbuild@0.17.19)))(webpack@5.88.0(esbuild@0.17.19))
-=======
   react-scripts@5.0.1(@babel/plugin-syntax-flow@7.23.3(@babel/core@7.22.5))(@babel/plugin-transform-react-jsx@7.23.4(@babel/core@7.22.5))(@types/babel__core@7.20.5)(esbuild@0.17.19)(eslint@8.54.0)(react@18.2.0)(ts-node@10.9.1(@types/node@16.18.34)(typescript@5.2.2))(type-fest@3.1.0)(typescript@5.2.2):
     dependencies:
       '@babel/core': 7.22.5
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.10(react-refresh@0.11.0)(type-fest@3.1.0)(webpack-dev-server@4.15.1(webpack@5.88.0(esbuild@0.17.19)))(webpack@5.88.0(esbuild@0.17.19))
->>>>>>> origin/master
       '@svgr/webpack': 5.5.0
       babel-jest: 27.5.1(@babel/core@7.22.5)
       babel-loader: 8.3.0(@babel/core@7.22.5)(webpack@5.88.0(esbuild@0.17.19))
@@ -25425,7 +25318,7 @@ snapshots:
 
   type-fest@3.1.0: {}
 
-  type-fest@4.18.1: {}
+  type-fest@4.18.2: {}
 
   type-is@1.6.18:
     dependencies:

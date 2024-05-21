@@ -17,7 +17,7 @@ export interface WalletConfigOptions {
   /**
    * If `number`, the number of unique asset ids each wallet will own.
    *
-   * If `AssetId[]`, the asset ids the each wallet will own besides `AssetId.BaseAssetId`.
+   * If `AssetId[]`, the asset ids the each wallet will own besides the base asset.
    */
   assets: number | AssetId[];
 
@@ -45,6 +45,7 @@ export class WalletConfig {
   private initialState: SnapshotConfigs['stateConfig'];
   private options: WalletConfigOptions;
   public wallets: WalletUnlocked[];
+
   private generateWallets: () => WalletUnlocked[] = () => {
     const generatedWallets: WalletUnlocked[] = [];
     for (let index = 1; index <= this.options.count; index++) {
@@ -54,18 +55,19 @@ export class WalletConfig {
   };
 
   constructor(baseAssetId: string, config: WalletConfigOptions) {
-    const BASE_ASSET_ID = baseAssetId.startsWith('0x') ? baseAssetId : `0x${baseAssetId}`;
-    WalletConfig.guard(config);
+    WalletConfig.validate(config);
 
     this.options = config;
 
     const { assets, coinsPerAsset, amountPerCoin, messages } = this.options;
+
     this.wallets = this.generateWallets();
+
     this.initialState = {
       messages: WalletConfig.createMessages(this.wallets, messages),
       coins: WalletConfig.createCoins(
         this.wallets,
-        BASE_ASSET_ID,
+        baseAssetId,
         assets,
         coinsPerAsset,
         amountPerCoin
@@ -86,12 +88,18 @@ export class WalletConfig {
     };
   }
 
+  /**
+   * Create messages for the wallets in the format that the chain expects.
+   */
   private static createMessages(wallets: WalletUnlocked[], messages: TestMessage[]) {
     return messages
       .map((msg) => wallets.map((wallet) => msg.toChainMessage(wallet.address)))
       .flatMap((x) => x);
   }
 
+  /**
+   * Create coins for the wallets in the format that the chain expects.
+   */
   private static createCoins(
     wallets: WalletUnlocked[],
     baseAssetId: string,
@@ -105,9 +113,7 @@ export class WalletConfig {
     if (Array.isArray(assets)) {
       assetIds = assetIds.concat(assets.map((a) => a.value));
     } else {
-      for (let index = 0; index < assets - 1; index++) {
-        assetIds.push(AssetId.random().value);
-      }
+      assetIds.concat(AssetId.random(assets).map((a) => a.value));
     }
 
     wallets
@@ -131,7 +137,7 @@ export class WalletConfig {
     return coins;
   }
 
-  private static guard({
+  private static validate({
     count: wallets,
     assets,
     coinsPerAsset,
