@@ -76,14 +76,17 @@ export async function setupTestProviderAndWallets({
 
   let cleanup: () => void;
   let url: string;
-  console.log('using server url', process.env.LAUNCH_NODE_SERVER_PORT);
   if (process.env.LAUNCH_NODE_SERVER_PORT) {
     const serverUrl = `http://localhost:${process.env.LAUNCH_NODE_SERVER_PORT}`;
-    url = await (await fetch(serverUrl)).text();
-    console.log('received url', url);
+    url = await (
+      await fetch(serverUrl, { method: 'POST', body: JSON.stringify(launchNodeOptions) })
+    ).text();
+
     cleanup = () => {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      fetch(`${serverUrl}/cleanup/${url}`);
+      fetch(`${serverUrl}/cleanup/${url}`, {
+        method: 'POST',
+      });
     };
   } else {
     const settings = await launchNode(launchNodeOptions);
