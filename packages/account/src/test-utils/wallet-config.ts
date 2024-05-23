@@ -15,7 +15,7 @@ export interface WalletConfigOptions {
   count: number;
 
   /**
-   * If `number`, the number of unique asset ids each wallet will own.
+   * If `number`, the number of unique asset ids each wallet will own with the base asset included.
    *
    * If `AssetId[]`, the asset ids the each wallet will own besides the base asset.
    */
@@ -113,7 +113,7 @@ export class WalletConfig {
     if (Array.isArray(assets)) {
       assetIds = assetIds.concat(assets.map((a) => a.value));
     } else {
-      assetIds.concat(AssetId.random(assets).map((a) => a.value));
+      assetIds = assetIds.concat(AssetId.random(assets - 1).map((a) => a.value));
     }
 
     wallets

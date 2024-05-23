@@ -32,18 +32,15 @@ importers:
       '@elasticpath/textlint-rule-no-dead-relative-link':
         specifier: ^1.1.1
         version: 1.1.1
-      '@fuel-ts/forc':
-        specifier: workspace:*
-        version: link:packages/forc
-      '@fuel-ts/fuel-core':
-        specifier: workspace:*
-        version: link:packages/fuel-core
       '@fuel-ts/utils':
         specifier: workspace:*
         version: link:packages/utils
-      '@fuel-ts/versions':
-        specifier: workspace:^
-        version: link:packages/versions
+      '@internal/forc':
+        specifier: workspace:*
+        version: link:internal/forc
+      '@internal/fuel-core':
+        specifier: workspace:*
+        version: link:internal/fuel-core
       '@internal/tsup':
         specifier: workspace:*
         version: link:internal/tsup
@@ -113,9 +110,6 @@ importers:
       eslint-plugin-tsdoc:
         specifier: ^0.2.17
         version: 0.2.17
-      fuels:
-        specifier: workspace:*
-        version: link:packages/fuels
       glob:
         specifier: ^10.2.6
         version: 10.2.6
@@ -320,7 +314,7 @@ importers:
         version: 18.2.0(react@18.2.0)
       react-scripts:
         specifier: 5.0.1
-        version: 5.0.1(@babel/plugin-syntax-flow@7.23.3(@babel/core@7.22.5))(@babel/plugin-transform-react-jsx@7.23.4(@babel/core@7.22.5))(@types/babel__core@7.20.5)(esbuild@0.17.19)(eslint@8.54.0)(react@18.2.0)(ts-node@10.9.1(@types/node@16.18.34)(typescript@5.2.2))(type-fest@3.1.0)(typescript@5.2.2)
+        version: 5.0.1(@babel/plugin-syntax-flow@7.23.3(@babel/core@7.22.5))(@babel/plugin-transform-react-jsx@7.23.4(@babel/core@7.22.5))(@types/babel__core@7.20.5)(esbuild@0.17.19)(eslint@8.54.0)(react@18.2.0)(ts-node@10.9.1(@types/node@16.18.34)(typescript@5.2.2))(type-fest@4.18.2)(typescript@5.2.2)
       typescript:
         specifier: ~5.2.2
         version: 5.2.2
@@ -390,9 +384,9 @@ importers:
       '@fuel-ts/errors':
         specifier: workspace:*
         version: link:../../packages/errors
-      '@fuel-ts/forc':
+      '@internal/forc':
         specifier: workspace:*
-        version: link:../../packages/forc
+        version: link:../../internal/forc
 
   apps/demo-wallet-sdk-react:
     dependencies:
@@ -566,6 +560,18 @@ importers:
 
   internal/check-tests: {}
 
+  internal/forc:
+    dependencies:
+      node-fetch:
+        specifier: ^2.6.7
+        version: 2.7.0
+
+  internal/fuel-core:
+    dependencies:
+      node-fetch:
+        specifier: ^2.7.0
+        version: 2.7.0
+
   internal/tsup: {}
 
   packages/abi-coder:
@@ -625,9 +631,9 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
     devDependencies:
-      '@fuel-ts/forc':
+      '@internal/forc':
         specifier: workspace:*
-        version: link:../forc
+        version: link:../../internal/forc
       '@types/mkdirp':
         specifier: ^1.0.2
         version: 1.0.2
@@ -789,9 +795,9 @@ importers:
         specifier: ^0.29.0
         version: 0.29.0
     devDependencies:
-      '@fuel-ts/forc':
+      '@internal/forc':
         specifier: workspace:*
-        version: link:../forc
+        version: link:../../internal/forc
       '@types/ramda':
         specifier: ^0.29.3
         version: 0.29.3
@@ -848,18 +854,6 @@ importers:
         specifier: workspace:*
         version: link:../versions
 
-  packages/forc:
-    dependencies:
-      node-fetch:
-        specifier: ^2.6.7
-        version: 2.6.7
-
-  packages/fuel-core:
-    dependencies:
-      node-fetch:
-        specifier: ^2.7.0
-        version: 2.7.0
-
   packages/fuel-gauge:
     dependencies:
       fuels:
@@ -872,12 +866,12 @@ importers:
       '@fuel-ts/errors':
         specifier: workspace:*
         version: link:../errors
-      '@fuel-ts/forc':
-        specifier: workspace:*
-        version: link:../forc
       '@fuel-ts/utils':
         specifier: workspace:*
         version: link:../utils
+      '@internal/forc':
+        specifier: workspace:*
+        version: link:../../internal/forc
 
   packages/fuels:
     dependencies:
@@ -902,12 +896,6 @@ importers:
       '@fuel-ts/errors':
         specifier: workspace:*
         version: link:../errors
-      '@fuel-ts/forc':
-        specifier: workspace:*
-        version: link:../forc
-      '@fuel-ts/fuel-core':
-        specifier: workspace:*
-        version: link:../fuel-core
       '@fuel-ts/hasher':
         specifier: workspace:*
         version: link:../hasher
@@ -1090,9 +1078,9 @@ importers:
         specifier: workspace:*
         version: link:../utils
     devDependencies:
-      '@fuel-ts/forc':
+      '@internal/forc':
         specifier: workspace:*
-        version: link:../forc
+        version: link:../../internal/forc
 
   packages/transactions:
     dependencies:
@@ -1129,6 +1117,9 @@ importers:
       '@fuel-ts/math':
         specifier: workspace:*
         version: link:../math
+      '@fuel-ts/versions':
+        specifier: workspace:*
+        version: link:../versions
 
   packages/versions:
     dependencies:
@@ -8904,15 +8895,6 @@ packages:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
 
-  node-fetch@2.6.7:
-    resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
-    engines: {node: 4.x || >=6.0.0}
-    peerDependencies:
-      encoding: ^0.1.0
-    peerDependenciesMeta:
-      encoding:
-        optional: true
-
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
     engines: {node: 4.x || >=6.0.0}
@@ -15366,7 +15348,7 @@ snapshots:
       picocolors: 1.0.0
       tslib: 2.6.0
 
-  '@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.11.0)(type-fest@3.1.0)(webpack-dev-server@4.15.1(webpack@5.88.0(esbuild@0.17.19)))(webpack@5.88.0(esbuild@0.17.19))':
+  '@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.11.0)(type-fest@4.18.2)(webpack-dev-server@4.15.1(webpack@5.88.0(esbuild@0.17.19)))(webpack@5.88.0(esbuild@0.17.19))':
     dependencies:
       ansi-html-community: 0.0.8
       common-path-prefix: 3.0.0
@@ -15380,7 +15362,7 @@ snapshots:
       source-map: 0.7.4
       webpack: 5.88.0(esbuild@0.17.19)
     optionalDependencies:
-      type-fest: 3.1.0
+      type-fest: 4.18.2
       webpack-dev-server: 4.15.1(webpack@5.88.0(esbuild@0.17.19))
 
   '@pnpm/constants@7.1.1': {}
@@ -22235,10 +22217,6 @@ snapshots:
 
   node-domexception@1.0.0: {}
 
-  node-fetch@2.6.7:
-    dependencies:
-      whatwg-url: 5.0.0
-
   node-fetch@2.7.0:
     dependencies:
       whatwg-url: 5.0.0
@@ -23647,10 +23625,10 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.2.9
 
-  react-scripts@5.0.1(@babel/plugin-syntax-flow@7.23.3(@babel/core@7.22.5))(@babel/plugin-transform-react-jsx@7.23.4(@babel/core@7.22.5))(@types/babel__core@7.20.5)(esbuild@0.17.19)(eslint@8.54.0)(react@18.2.0)(ts-node@10.9.1(@types/node@16.18.34)(typescript@5.2.2))(type-fest@3.1.0)(typescript@5.2.2):
+  react-scripts@5.0.1(@babel/plugin-syntax-flow@7.23.3(@babel/core@7.22.5))(@babel/plugin-transform-react-jsx@7.23.4(@babel/core@7.22.5))(@types/babel__core@7.20.5)(esbuild@0.17.19)(eslint@8.54.0)(react@18.2.0)(ts-node@10.9.1(@types/node@16.18.34)(typescript@5.2.2))(type-fest@4.18.2)(typescript@5.2.2):
     dependencies:
       '@babel/core': 7.22.5
-      '@pmmmwh/react-refresh-webpack-plugin': 0.5.10(react-refresh@0.11.0)(type-fest@3.1.0)(webpack-dev-server@4.15.1(webpack@5.88.0(esbuild@0.17.19)))(webpack@5.88.0(esbuild@0.17.19))
+      '@pmmmwh/react-refresh-webpack-plugin': 0.5.10(react-refresh@0.11.0)(type-fest@4.18.2)(webpack-dev-server@4.15.1(webpack@5.88.0(esbuild@0.17.19)))(webpack@5.88.0(esbuild@0.17.19))
       '@svgr/webpack': 5.5.0
       babel-jest: 27.5.1(@babel/core@7.22.5)
       babel-loader: 8.3.0(@babel/core@7.22.5)(webpack@5.88.0(esbuild@0.17.19))

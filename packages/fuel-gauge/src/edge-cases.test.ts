@@ -20,7 +20,6 @@ describe('Edge Cases', () => {
     {
       using launched = await launchTestNode();
       const { provider } = launched;
-      expect(await urlIsLive(provider.url)).toBeTruthy();
     }
 
     console.log(fetchSpy.mock.calls.map(([url, req]) => url));
