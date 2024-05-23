@@ -5,4 +5,3 @@ export * from './setup-test-provider-and-wallets';
 export * from './wallet-config';
 export * from './test-message';
 export * from './asset-id';
-export * from './setupLaunchNodeServer';

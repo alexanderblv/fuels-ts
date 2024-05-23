@@ -21,6 +21,8 @@ const config: UserConfig = {
         "util",
         "stream",
         "path",
+        "fs",
+        "os",
       ],
       overrides: {
         fs: "memfs",
@@ -32,6 +34,9 @@ const config: UserConfig = {
     include: ["events", "timers/promises"],
   },
   test: {
+    env: {
+      LAUNCH_NODE_SERVER_PORT: "49342",
+    },
     coverage: {
       reportsDirectory: "coverage/environments/browser",
     },

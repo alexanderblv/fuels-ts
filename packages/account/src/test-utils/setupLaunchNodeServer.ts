@@ -5,43 +5,65 @@ import { launchNode } from './launchNode';
 
 const cleanupFns: Map<string, Awaited<LaunchNodeResult>['cleanup']> = new Map();
 
-export const startServer = () =>
-  new Promise<{ serverUrl: string; closeServerCallback: () => void }>((resolve) => {
-    const server = http.createServer(async (req, res) => {
-      if (req.url === '/') {
-        const node = await launchNode({ loggingEnabled: false, port: '0' });
-        cleanupFns.set(node.port, node.cleanup);
-        res.write(
-          JSON.stringify({
-            url: node.url,
-            port: node.port,
-          })
-        );
-        res.end();
-        return;
+function cleanupAllNodes() {
+  cleanupFns.forEach((fn) => fn());
+  cleanupFns.clear();
+}
+
+const server = http.createServer(async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  console.log(req.url);
+  if (req.url === '/') {
+    const node = await launchNode({ loggingEnabled: false, port: '0' });
+    cleanupFns.set(node.url, node.cleanup);
+    // const response = JSON.stringify({
+    //   url: node.url,
+    // });
+    // console.log(response);
+    res.write(node.url);
+    res.end();
+    return;
+  }
+
+  if (req.url === '/cleanup-all') {
+    cleanupAllNodes();
+    res.end();
+  }
+
+  if (req.url?.startsWith('/cleanup')) {
+    const nodeUrl = req.url?.match(/\/cleanup\/(.+)/)?.[1];
+    console.log(nodeUrl);
+    if (nodeUrl) {
+      const cleanupFn = cleanupFns.get(nodeUrl);
+      console.log(cleanupFn);
+      if (cleanupFn) {
+        cleanupFn();
       }
+      res.end();
+    }
+  }
+});
 
-      const port = req.url?.match(/\/cleanup\/(\d+)/)?.[1];
-      if (port) {
-        const cleanupFn = cleanupFns.get(port);
+const port = process.argv[2] ? parseInt(process.argv[2], 10) : 49342;
 
-        if (cleanupFn) {
-          cleanupFn();
-        }
-        res.end();
-      }
-    });
+server.listen(port);
 
-    server.listen(0);
-    server.on('listening', () => {
-      // @ts-expect-error doesnt know port exists
-      const port = server.address()?.port;
-      resolve({
-        serverUrl: `http://localhost:${port}`,
-        closeServerCallback: () => {
-          //   cleanupFns.forEach((fn) => fn());
-          server.close();
-        },
-      });
-    });
-  });
+server.on('listening', () => {
+  const serverUrl = `http://localhost:${port}`;
+  console.log(`Server is listening on: ${serverUrl}`);
+  console.log("To launch a new fuel-core node and get its url, make a request to '/'.");
+  console.log(
+    "To kill the node, make a request to '/cleanup/<url>' where <url> is the url of the node you want to kill."
+  );
+  console.log("To kill all nodes, make a request to '/cleanup-all'.");
+});
+
+server.on('close', cleanupAllNodes);
+
+process.on('exit', cleanupAllNodes);
+process.on('SIGINT', cleanupAllNodes);
+process.on('SIGUSR1', cleanupAllNodes);
+process.on('SIGUSR2', cleanupAllNodes);
+process.on('uncaughtException', cleanupAllNodes);
+process.on('unhandledRejection', cleanupAllNodes);
+process.on('beforeExit', cleanupAllNodes);
