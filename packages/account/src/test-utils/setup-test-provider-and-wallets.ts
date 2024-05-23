@@ -7,8 +7,8 @@ import { Provider } from '../providers';
 import type { WalletUnlocked } from '../wallet';
 
 import { AssetId } from './asset-id';
+import type { LaunchNodeOptions } from './launchNode';
 import { launchNode } from './launchNode';
-import { type LaunchNodeOptions } from './launchNode';
 import type { WalletConfigOptions } from './wallet-config';
 import { WalletConfig } from './wallet-config';
 

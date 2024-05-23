@@ -29,8 +29,8 @@ describe('CallTestContract', () => {
     [{ a: true, b: 0 }],
     [{ a: false, b: 1337 }],
     [{ a: true, b: 1337 }],
-    // [{ a: false, b: U64_MAX.sub(1) }],
-    // [{ a: true, b: U64_MAX.sub(1) }],
+    [{ a: false, b: U64_MAX.sub(1) }],
+    [{ a: true, b: U64_MAX.sub(1) }],
   ])('can call a contract with structs (%p)', async (struct) => {
     using launched = await launchTestNode({
       deployContracts: [{ deployer: CallTestContractAbi__factory, bytecode: binHexlified }],

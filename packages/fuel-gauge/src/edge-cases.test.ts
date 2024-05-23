@@ -1,7 +1,5 @@
 import { generateTestWallet } from '@fuel-ts/account/test-utils';
-import { urlIsLive } from '@fuel-ts/utils/test-utils';
 import { FUEL_NETWORK_URL, Provider, TransactionResponse, Wallet } from 'fuels';
-import { launchTestNode } from 'fuels/test-utils';
 
 import { getSetupContract } from './utils';
 
@@ -9,23 +7,13 @@ import { getSetupContract } from './utils';
  * @group node
  */
 describe('Edge Cases', () => {
-  it.skip('can run collision_in_fn_names', async () => {
+  it('can run collision_in_fn_names', async () => {
     const contract = await getSetupContract('collision_in_fn_names')();
 
     expect((await contract.functions.new().call()).value.toNumber()).toEqual(12345);
   });
 
-  test('just to have a test', async () => {
-    const fetchSpy = vi.spyOn(global, 'fetch');
-    {
-      using launched = await launchTestNode();
-      const { provider } = launched;
-    }
-
-    console.log(fetchSpy.mock.calls.map(([url, req]) => url));
-  });
-
-  test.skip("SSE subscriptions that are closed by the node don't hang a for-await-of loop", async () => {
+  test("SSE subscriptions that are closed by the node don't hang a for-await-of loop", async () => {
     const provider = await Provider.create(FUEL_NETWORK_URL);
     const baseAssetId = provider.getBaseAssetId();
     const adminWallet = await generateTestWallet(provider, [[500_000, baseAssetId]]);

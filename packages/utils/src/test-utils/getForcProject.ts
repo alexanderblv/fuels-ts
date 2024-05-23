@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from 'fs';
-// import { join } from 'path';
+import { join } from 'path';
 
 import { hexlify } from '../index';
 import { normalizeString } from '../utils/normalizeString';
@@ -8,10 +8,6 @@ interface IGetForcProjectParams {
   projectDir: string;
   projectName: string;
   build: 'debug' | 'release';
-}
-
-function join(...paths: string[]) {
-  return paths.join('/');
 }
 
 export const getProjectBuildDir = (params: IGetForcProjectParams) =>
