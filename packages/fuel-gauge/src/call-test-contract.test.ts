@@ -16,16 +16,6 @@ const setupContract = async () => {
   return Object.assign(contract, { [Symbol.dispose]: cleanup });
 };
 
-const setupContract = async () => {
-  const {
-    contracts: [contract],
-    cleanup,
-  } = await launchTestNode({
-    deployContracts: [{ deployer: CallTestContractAbi__factory, bytecode: binHexlified }],
-  });
-  return Object.assign(contract, { [Symbol.dispose]: cleanup });
-};
-
 const U64_MAX = bn(2).pow(64).sub(1);
 
 /**
