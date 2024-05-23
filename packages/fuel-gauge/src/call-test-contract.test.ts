@@ -4,7 +4,17 @@ import { BN, bn, toHex } from 'fuels';
 import { launchTestNode } from 'fuels/test-utils';
 
 import { CallTestContractAbi__factory } from '../test/typegen/contracts';
-import binHexlified from '../test/typegen/contracts/CallTestContractAbi.hex';
+import bytecode from '../test/typegen/contracts/CallTestContractAbi.hex';
+
+const setupContract = async () => {
+  const {
+    contracts: [contract],
+    cleanup,
+  } = await launchTestNode({
+    deployContracts: [{ deployer: CallTestContractAbi__factory, bytecode }],
+  });
+  return Object.assign(contract, { [Symbol.dispose]: cleanup });
+};
 
 const setupContract = async () => {
   const {
