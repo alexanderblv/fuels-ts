@@ -38,6 +38,7 @@ const config: UserConfig = {
       LAUNCH_NODE_SERVER_PORT: "49342",
     },
     coverage: {
+      enabled: false,
       reportsDirectory: "coverage/environments/browser",
     },
     browser: {

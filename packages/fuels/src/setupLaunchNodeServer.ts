@@ -1,11 +1,11 @@
+import type { LaunchNodeOptions, LaunchNodeResult } from '@fuel-ts/account/test-utils';
+import { launchNode } from '@fuel-ts/account/test-utils';
 import http from 'http';
-
-import type { LaunchNodeOptions, LaunchNodeResult } from './launchNode';
-import { launchNode } from './launchNode';
 
 const cleanupFns: Map<string, Awaited<LaunchNodeResult>['cleanup']> = new Map();
 
 function cleanupAllNodes() {
+  console.log('cleaning up');
   cleanupFns.forEach((fn) => fn());
   cleanupFns.clear();
 }
@@ -71,12 +71,22 @@ server.on('listening', () => {
   console.log("To kill all nodes, make a request to '/cleanup-all'.");
 });
 
-server.on('close', cleanupAllNodes);
+server.on('close', () => {
+  console.log('close');
+  cleanupAllNodes();
+});
 
-process.on('exit', cleanupAllNodes);
+process.on('exit', () => {
+  console.log('exit');
+  cleanupAllNodes();
+});
 process.on('SIGINT', cleanupAllNodes);
 process.on('SIGUSR1', cleanupAllNodes);
 process.on('SIGUSR2', cleanupAllNodes);
-process.on('uncaughtException', cleanupAllNodes);
+process.on('uncaughtException', (rr) => {
+  console.log(rr);
+  console.log('uncaughtException');
+  cleanupAllNodes();
+});
 process.on('unhandledRejection', cleanupAllNodes);
 process.on('beforeExit', cleanupAllNodes);
