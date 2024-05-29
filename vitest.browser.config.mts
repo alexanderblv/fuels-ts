@@ -37,6 +37,7 @@ const config: UserConfig = {
     env: {
       LAUNCH_NODE_SERVER_PORT: "49342",
     },
+    globalSetup: ["./vitest.global-browser-setup.ts"],
     coverage: {
       enabled: false,
       reportsDirectory: "coverage/environments/browser",

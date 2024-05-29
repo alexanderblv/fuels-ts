@@ -11,7 +11,7 @@ const setupContract = async () => {
     contracts: [contract],
     cleanup,
   } = await launchTestNode({
-    deployContracts: [{ deployer: CallTestContractAbi__factory, bytecode }],
+    contractsConfigs: [{ deployer: CallTestContractAbi__factory, bytecode }],
   });
   return Object.assign(contract, { [Symbol.dispose]: cleanup });
 };
