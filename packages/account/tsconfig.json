@@ -3,5 +3,5 @@
   "compilerOptions": {
     "outDir": "./dist"
   },
-  "include": ["src", "test/**/*", "../fuels/src/setupLaunchNodeServer.ts"]
+  "include": ["src", "test/**/*"]
 }
