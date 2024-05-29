@@ -15,7 +15,7 @@ import * as launchNodeMod from './launchNode';
 import { setupTestProviderAndWallets } from './setup-test-provider-and-wallets';
 import { TestMessage } from './test-message';
 
-const BaseAssetId = `0x${defaultSnapshotConfigs.chainConfig.consensus_parameters.V1.base_asset_id}`;
+const BaseAssetId = defaultSnapshotConfigs.chainConfig.consensus_parameters.V1.base_asset_id;
 /**
  * @group node
  */
@@ -131,7 +131,7 @@ describe('setupTestProviderAndWallets', () => {
     const [assetId] = AssetId.random();
     const testMessage = new TestMessage();
     using providerAndWallets = await setupTestProviderAndWallets({
-      walletConfig: {
+      walletsConfig: {
         count: 1,
         assets: [assetId],
         messages: [testMessage],
@@ -144,7 +144,7 @@ describe('setupTestProviderAndWallets', () => {
 
     const coins = await wallet.getCoins();
     expect(coins.length).toBe(2);
-    coins.sort((a, b) => (bn(a.assetId).gt(bn(b.assetId)) ? 1 : -1));
+    coins.sort((a) => (a.assetId === BaseAssetId ? -1 : 1));
 
     const coin1 = coins[0];
 
@@ -177,7 +177,7 @@ describe('setupTestProviderAndWallets', () => {
     const amountPerCoin = 15;
 
     using providerAndWallets = await setupTestProviderAndWallets({
-      walletConfig: {
+      walletsConfig: {
         count: numWallets,
         assets: numOfAssets,
         coinsPerAsset,
@@ -208,7 +208,7 @@ describe('setupTestProviderAndWallets', () => {
     await Promise.all(promises);
   });
 
-  test("gives control to add additional custom coins/messages to the genesis block without overriding walletConfig's settings", async () => {
+  test("gives control to add additional custom coins/messages to the genesis block without overriding walletsConfig's settings", async () => {
     const pk = Signer.generatePrivateKey();
     const signer = new Signer(pk);
     const address = signer.address;
