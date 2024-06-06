@@ -1,5 +1,31 @@
 # Change Log
 
+## 0.90.0
+
+### Patch Changes
+
+- bb5a123: feat!: add `launchTestNode` utility
+- af3202c: feat: support for `bun`
+- Updated dependencies [bb5a123]
+- Updated dependencies [b1dbe42]
+- Updated dependencies [af3202c]
+  - @fuel-ts/utils@0.90.0
+  - @fuel-ts/account@0.90.0
+  - @fuel-ts/contract@0.90.0
+  - @fuel-ts/abi-typegen@0.90.0
+  - @fuel-ts/versions@0.90.0
+  - @fuel-ts/abi-coder@0.90.0
+  - @fuel-ts/address@0.90.0
+  - @fuel-ts/crypto@0.90.0
+  - @fuel-ts/hasher@0.90.0
+  - @fuel-ts/program@0.90.0
+  - @fuel-ts/script@0.90.0
+  - @fuel-ts/transactions@0.90.0
+  - @fuel-ts/errors@0.90.0
+  - @fuel-ts/merkle@0.90.0
+  - @fuel-ts/math@0.90.0
+  - @fuel-ts/interfaces@0.90.0
+
 ## 0.89.2
 
 ### Patch Changes

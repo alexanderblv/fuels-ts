@@ -1,5 +1,16 @@
 # @fuel-ts/utils
 
+## 0.90.0
+
+### Patch Changes
+
+- bb5a123: feat!: add `launchTestNode` utility
+- Updated dependencies [af3202c]
+  - @fuel-ts/versions@0.90.0
+  - @fuel-ts/errors@0.90.0
+  - @fuel-ts/math@0.90.0
+  - @fuel-ts/interfaces@0.90.0
+
 ## 0.89.2
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @fuel-ts/abi-typegen
 
+## 0.90.0
+
+### Patch Changes
+
+- af3202c: feat: support for `bun`
+- Updated dependencies [bb5a123]
+- Updated dependencies [af3202c]
+  - @fuel-ts/utils@0.90.0
+  - @fuel-ts/versions@0.90.0
+  - @fuel-ts/errors@0.90.0
+  - @fuel-ts/interfaces@0.90.0
+
 ## 0.89.2
 
 ### Patch Changes

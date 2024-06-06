@@ -1,5 +1,28 @@
 # Change Log
 
+## 0.90.0
+
+### Minor Changes
+
+- bb5a123: feat!: add `launchTestNode` utility
+
+### Patch Changes
+
+- b1dbe42: feat: implement `generateFakeResources` on `Account` class
+- Updated dependencies [bb5a123]
+- Updated dependencies [af3202c]
+  - @fuel-ts/utils@0.90.0
+  - @fuel-ts/versions@0.90.0
+  - @fuel-ts/abi-coder@0.90.0
+  - @fuel-ts/address@0.90.0
+  - @fuel-ts/crypto@0.90.0
+  - @fuel-ts/hasher@0.90.0
+  - @fuel-ts/transactions@0.90.0
+  - @fuel-ts/errors@0.90.0
+  - @fuel-ts/merkle@0.90.0
+  - @fuel-ts/math@0.90.0
+  - @fuel-ts/interfaces@0.90.0
+
 ## 0.89.2
 
 ### Patch Changes

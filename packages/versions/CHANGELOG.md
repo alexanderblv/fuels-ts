@@ -1,5 +1,11 @@
 # @fuel-ts/versions
 
+## 0.90.0
+
+### Patch Changes
+
+- af3202c: feat: support for `bun`
+
 ## 0.89.2
 
 ## 0.89.1

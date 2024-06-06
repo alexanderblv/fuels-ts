@@ -1,5 +1,11 @@
 # create-fuels
 
+## 0.90.0
+
+### Patch Changes
+
+- af3202c: feat: support for `bun`
+
 ## 0.89.2
 
 ### Patch Changes
